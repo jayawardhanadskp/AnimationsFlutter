@@ -1,4 +1,4 @@
-# animation_starter_code
+# flutter animation master
 
 A new Flutter project.
 
