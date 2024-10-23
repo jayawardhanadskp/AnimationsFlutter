@@ -2,6 +2,7 @@ import 'package:animation_starter_code/implicit_examples/animated_color_pallete.
 import 'package:flutter/material.dart';
 
 import 'explicit_examples/list_animation.dart';
+import 'explicit_examples/loading_animation.dart';
 import 'explicit_examples/login_animation.dart';
 import 'implicit_examples/animated_shopping_cart_button.dart';
 import 'implicit_examples/animated_tween_animation_builder_example.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ListAnimation(),
+      home: const RadialProgressAnimation(
+        progress: 0.65,
+        color: Colors.blue,
+      ),
     );
   }
 }
