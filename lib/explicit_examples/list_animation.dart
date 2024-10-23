@@ -30,7 +30,8 @@ class _ListAnimationState extends State<ListAnimation>
       (index) => Tween(begin: const Offset(-1, 1), end: Offset.zero)
           .animate(CurvedAnimation(
         parent: controller,
-        curve: Interval(index * (1 / itemCount), 1), // 0.2 seconds interval between all the listiles
+        curve: Interval(index * (1 / itemCount),
+            1), // 0.2 seconds interval between all the listiles
       )),
     );
 
@@ -56,7 +57,11 @@ class _ListAnimationState extends State<ListAnimation>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.forward();
+          if (controller.isCompleted) {
+            controller.reverse();
+          } else {
+            controller.forward();
+          }
         },
         child: const Icon(Icons.done),
       ),
