@@ -24,17 +24,28 @@ class _SplashAnimationState extends State<SplashAnimation>
 
     controller.addListener(() {
       if (controller.isCompleted) {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const Destination()));
-        
+        Navigator.of(context).push(PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) {
+            return const Destination();
+          },
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final tween = Tween(
+              begin: const Offset(0, -1),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut));
+            return SlideTransition(
+              position: tween,
+              child: child,
+            );
+          },
+        ));
+
         // reset zoom after animation
         Timer(const Duration(milliseconds: 500), () {
           controller.reset();
         });
       }
     });
-
-    
   }
 
   @override
